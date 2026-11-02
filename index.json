@@ -996,6 +996,41 @@
       }
     },
     {
+      "id": "javis.postiz",
+      "kind": "connector",
+      "name": {
+        "vi": "Postiz: Lên lịch đăng bài",
+        "en": "Postiz: Social scheduling"
+      },
+      "description": {
+        "vi": "Javis lên lịch và đăng bài lên Facebook, Instagram, TikTok, YouTube, LinkedIn, Threads, X, Pinterest, Telegram qua MCP chính chủ của Postiz. Dùng Postiz Cloud hoặc tự cài Postiz miễn phí trên VPS, dán API key là xong.",
+        "en": "Javis schedules and publishes to Facebook, Instagram, TikTok, YouTube, LinkedIn, Threads, X, Pinterest, Telegram through Postiz's official MCP. Works with Postiz Cloud or free self-hosted Postiz: paste an API key."
+      },
+      "version": "1.0.0",
+      "author": {
+        "name": "Javis"
+      },
+      "category": "mang-xa-hoi",
+      "category_label": {
+        "vi": "Mạng xã hội"
+      },
+      "tier": "data",
+      "verified": false,
+      "updated": "2026-11-02",
+      "homepage": "https://docs.postiz.com/public-api",
+      "icon": "packs/javis.postiz/assets/postiz.png",
+      "provides": {
+        "connectors": [
+          "postiz"
+        ]
+      },
+      "download": {
+        "url": "dist/javis-postiz-1.0.0.zip",
+        "sha256": "1bbb95b971286897030945572df659200ec86b7ebb1beb1b6267a5a3ea825c64",
+        "size": 13738
+      }
+    },
+    {
       "id": "javis.google-keep",
       "kind": "connector",
       "name": {

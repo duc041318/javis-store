@@ -1,0 +1,97 @@
+{
+  "id": "postiz",
+  "name": "Postiz",
+  "icon": "assets/postiz.png",
+  "category": "Mạng xã hội",
+  "description": "Lên lịch và đăng bài lên Facebook, Instagram, TikTok, YouTube, LinkedIn, Threads, X, Pinterest, Telegram... qua MCP chính chủ của Postiz. Dùng Postiz Cloud hoặc Postiz tự cài miễn phí.",
+  "status": "beta",
+  "transport": "http",
+  "url": "https://api.postiz.com/mcp",
+  "url_template": "{postiz_url}/api/mcp",
+  "auth": {
+    "type": "apikey",
+    "fields": [
+      {
+        "key": "api_key",
+        "label": "Postiz API key",
+        "placeholder": "Dán API key từ Postiz > Settings > Public API...",
+        "header": "Authorization: Bearer {api_key}"
+      },
+      {
+        "key": "postiz_url",
+        "label": "Địa chỉ Postiz tự cài (bỏ trống nếu dùng Postiz Cloud)",
+        "placeholder": "Ví dụ: https://postiz.cong-ty.vn",
+        "url_base": true,
+        "optional": true
+      }
+    ],
+    "guide": "Làm 1 lần:\n1. Đăng nhập Postiz, nối sẵn các kênh mạng xã hội trong Postiz (Facebook, TikTok...). Javis chỉ đăng được lên kênh đã nối ở đó.\n2. Vào Settings > Public API, copy API key, gõ vào ô đầu tiên.\n3. Dùng Postiz Cloud (postiz.com) thì để trống ô địa chỉ. Tự cài Postiz trên VPS thì gõ trang Postiz của bạn, Javis tự ghép thành <địa chỉ>/api/mcp.\n\nPostiz tự cài mà backend để ở tên miền riêng (không phải /api) thì thêm bằng nguồn tự khai: URL <backend>/mcp, header Authorization: Bearer <API key>.",
+    "guide_url": "https://docs.postiz.com/public-api",
+    "steps": [
+      {
+        "text": "Đăng nhập Postiz (Cloud hoặc bản tự cài trên VPS).",
+        "link": "https://platform.postiz.com",
+        "link_label": "Mở Postiz Cloud"
+      },
+      {
+        "text": "Trong Postiz, nối sẵn các kênh mạng xã hội muốn đăng (Facebook, Instagram, TikTok...). Javis chỉ đăng được lên kênh đã nối ở đây."
+      },
+      {
+        "text": "Vào Settings > Public API, copy API key rồi gõ vào ô API key bên dưới."
+      },
+      {
+        "text": "Dùng Postiz Cloud thì để trống ô thứ hai. Tự cài trên VPS thì gõ vào đó trang Postiz của bạn (vd https://postiz.cong-ty.vn). Xong bấm Kết nối.",
+        "link": "https://docs.postiz.com/public-api",
+        "link_label": "Hướng dẫn của Postiz"
+      }
+    ]
+  },
+  "validate": {
+    "tool": "integrationList",
+    "args": {}
+  },
+  "tool_meta": {
+    "read": [
+      "integrationList",
+      "groupList",
+      "integrationSchema",
+      "postsListTool",
+      "mediaListTool",
+      "mediaStatusTool",
+      "videoStatusTool",
+      "clippingStatusTool",
+      "uploadWidgetStatusTool",
+      "generateVideoOptions",
+      "videoFunctionTool"
+    ],
+    "write": [
+      "uploadFromUrlTool",
+      "uploadWidgetTool",
+      "uploadWidgetTicketTool",
+      "generateImageTool",
+      "generateVideoTool",
+      "clippingTool",
+      "clippingWidgetTicketTool",
+      "triggerTool",
+      "integrationTriggerTool"
+    ],
+    "danger": [
+      "integrationSchedulePostTool",
+      "schedulePostTool",
+      "postSettingsTool",
+      "deletePostTool",
+      "*schedule*",
+      "*delete*",
+      "*publish*"
+    ]
+  },
+  "default_perm": "readonly",
+  "risk": "Postiz đăng thật lên trang mạng xã hội của bạn: bài lên là người theo dõi thấy ngay, không hoàn tác được.\n\nChỉ đọc (mặc định): xem danh sách kênh, lịch bài đã lên, thư viện ảnh. Chưa đụng gì.\n\nGhi nháp: thêm tải ảnh/video vào thư viện Postiz và tạo ảnh/video bằng AI của Postiz (tiêu credit Postiz). Vẫn chưa đăng bài.\n\nToàn quyền: Javis tạo bài nháp, lên lịch, đăng ngay, sửa cài đặt và XOÁ bài bằng tài khoản Postiz của bạn. Tạo bài kể cả bản nháp đều đi qua cùng một tool với đăng thật nên xếp ở mức này.\n\nAPI key Postiz thấy MỌI kênh trong tổ chức Postiz của bạn.",
+  "ghi_da_can_nhac": [
+    "triggerTool",
+    "integrationTriggerTool",
+    "clippingTool",
+    "generateVideoTool",
+    "generateImageTool"
+  ]
+}
